@@ -1,0 +1,64 @@
+    if (input === 0) {
+      setCalc(calc);
+    } else {
+      setCalc(calc + input);
+    }
+
+
+  function handleClick(e) {
+    if (e.target.innerHTML === "AC") { //AC clears all
+      setInput({display: 0});
+      setCalc({formula: ""});
+    } else if (input.type === "operator") {
+      setInput({display: input.display + e.target.innerHTML, type: e.target.className}); //else input is whichever button was clicked
+      
+    }
+  }
+  
+  useEffect(() => { //calls code inside on initial render and whenever input changes (useEffect({function}, [dependency]))
+          console.log("useEffect called")
+
+
+    switch (input.type) {
+      case "number": //numbers always concatenate
+        setCalc({formula: input.display, currenttype: input.type});
+        break;
+      case "operator": //operators concatenate if the previous character is a number (unless -, which can go next to another operator)
+        if (calc.currenttype === "number" | input.display === "-") {
+          setCalc({formula: calc.formula + input.display})
+        };
+        break;
+      case "special":
+        if (input.display === ".") { //for a decimal case
+          let numbersArray = calc.formula.split(/[+-\/x]/); //puts numbers from formula into array
+          let lastNum = numbersArray[numbersArray.length - 1]; //this is the last number in the array
+          console.log(numbersArray);
+          if (!/[.]/.test(lastNum)) {
+            setCalc({formula: calc.formula + input.display})
+          }
+
+        }
+    }
+
+  }, [input.display]) 
+
+
+switch (input.type) {
+      case "number": //numbers always concatenate
+        setCalc({formula: calc.formula + input.currentVal, currenttype: input.type});
+        break;
+      case "operator": //operators concatenate if the previous character is a number (unless -, which can go next to another operator)
+        if (calc.currenttype === "number" | input.display === "-") {
+          setCalc({formula: calc.formula + input.display})
+        };
+        break;
+      case "special":
+        if (input.display === ".") { //for a decimal case
+          let numbersArray = calc.formula.split(/[+-\/x]/); //puts numbers from formula into array
+          let lastNum = numbersArray[numbersArray.length - 1]; //this is the last number in the array
+          console.log(numbersArray);
+          if (!/[.]/.test(lastNum)) {
+            setCalc({formula: calc.formula + input.display})
+          }
+
+        }

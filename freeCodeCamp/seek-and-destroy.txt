@@ -1,0 +1,18 @@
+function destroyer(arr) {
+  let args = [...arguments];
+  let toRemove = args.slice(1);
+  let originalArr = args[0];
+  let newArr = [];
+
+  //compare toRemove and changingArr. If changingArr contains an element from toRemove, delete it.
+
+  for (let i = 0; i < originalArr.length; i++) {
+    if (toRemove.indexOf(originalArr[i]) === -1) {
+      newArr.push(originalArr[i]);
+    }
+  }
+
+  return newArr;
+}
+
+console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3));

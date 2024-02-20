@@ -1,0 +1,63 @@
+testArr.splice(testArr.indexOf(NaN), 1) ----- note that NaN === NaN so indexOf(NaN) doesn't work, it cannot find NaN and returns undefined.
+
+/*
+testArr.length = 5. 
+
+1st iteration:
+i = 0
+falsyArr.includes(null) === true
+testArr.splice(testArr.indexOf(null), 1) --> testArr.splice(0, 1)
+testArr = [NaN, 1, 2, undefined]
+i--
+i = -1
+
+2nd iteration: 
+i = -1
+i++
+i = 0
+falsyArr.includes(NaN) === true
+ --> testArr.splice(undefined, 1)
+testArr = [1, 2, undefined]
+i--
+i = -1
+
+3rd iteration:
+i = -1
+i++
+i = 0
+falsyArr.includes(1) === false
+testArr = [1, 2, undefined]
+i = 0
+
+4th iteration:
+i = 0
+i++
+i = 1
+falsyArr.includes(2) === false
+testArr = [1, 2, undefined]
+i = 1
+
+5th iteration:
+i = 1
+i++
+i = 2
+falsyArr.includes(undefined) === true
+testArr.splice(testArr.indexOf(undefined), 1) --> testArr.splice(2, 1)
+testArr = [1, 2]
+i = 2
+i--
+
+extra iteration because i-- from if statement:
+i = 1 (i < 2 which is the current testArr.length)
+falsyArr.includes(2) === false
+testArr = [1, 2]
+i = 1
+
+extra iteration:
+i++
+i = 2. for loop stops.
+testArr = [1, 2]
+
+*/
+
+

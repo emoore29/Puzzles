@@ -1,0 +1,22 @@
+function palindrome(str) {
+  
+  //remove all non-alphanumeric characters and make everything lowercase
+
+  let arr = [...str]
+  let newArr = arr.filter(element => /[a-zA-Z0-9]/.test(element))
+  let testStr = newArr.join("").toLowerCase()
+  
+  //reverse the string
+
+  let reverseArr = [...testStr]
+  let reverseStr = reverseArr.reverse().join("")
+  
+  //compare with if statement
+
+  if (reverseStr === testStr) {
+    return true
+  } return false
+
+}
+
+console.log(palindrome("1 eye for of 1 eye."));

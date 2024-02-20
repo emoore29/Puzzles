@@ -1,0 +1,11 @@
+function reverseString(str) {
+  let arr = [...str]; /* spreads str letters into an array */
+  let newArr = []; /* base for new reversed arr */
+  for (let i = arr.length - 1; i >= 0; i--) { /* iterate from last to first element */
+    newArr.push(arr[i]);  /* push last element of arr into newArr */
+  }
+  let result = newArr.join("");  /* joins elements from newArr into a string assigned to result variable */
+  return result;
+}
+
+console.log(reverseString("Greetings from Earth"));

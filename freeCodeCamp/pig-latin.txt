@@ -1,0 +1,19 @@
+function translatePigLatin(str) {
+  let testRegex = /^[^aeiou]+[aeiou]+/;
+  let hasVowels = /[aeiou]+/
+  if (testRegex.test(str) === true) {
+    let arr = str.split(/([aeiou].*)/) //split str at the first vowel
+    console.log(arr);
+    let firstLetters = arr[0];
+    let truncWord = arr[1];
+    return truncWord.concat(firstLetters).concat("ay");
+  } else if (hasVowels.test(str) === false) {
+    console.log(str + " has no vowels");
+    return str.concat("ay");
+  } else {
+    console.log(str + " starts with a vowel");
+    return str.concat("way");
+  }
+}
+
+console.log(translatePigLatin("rhythm"));

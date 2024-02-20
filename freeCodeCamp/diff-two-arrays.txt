@@ -1,0 +1,19 @@
+function diffArray(arr1, arr2) {
+  const newArr = [];
+
+  function checker(first, second) {
+    for (let i = 0; i < first.length; i++) {
+      if (second.indexOf(first[i]) === -1) {
+        newArr.push(first[i]);
+      }
+    }
+  }
+
+  checker(arr1, arr2);
+  checker(arr2, arr1);
+
+
+  return newArr;
+}
+
+console.log(diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]));

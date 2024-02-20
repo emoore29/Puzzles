@@ -1,0 +1,19 @@
+function orbitalPeriod(arr) {
+  const GM = 398600.4418;
+  const earthRadius = 6367.4447;
+  
+  let avgAlt = 0;
+  let orbit = 0;
+  let newArr = arr.slice();
+
+  for (let i = 0; i < newArr.length; i++) {
+    avgAlt = newArr[i]["avgAlt"]
+    orbit = 2 * Math.PI * Math.sqrt(Math.pow(earthRadius + avgAlt, 3) / GM)
+    delete newArr[i]["avgAlt"]
+    newArr[i]["orbitalPeriod"] = Math.round(orbit)
+  }
+  
+  return newArr;
+}
+
+console.log(orbitalPeriod([{name: "iss", avgAlt: 413.6}, {name: "hubble", avgAlt: 556.7}, {name: "moon", avgAlt: 378632.553}]));

@@ -1,0 +1,18 @@
+function largestOfFour(arr) {
+  let largestArr = [];
+  let num = 0;
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length; j++) {
+      if (arr[i][j] > num) {
+        num = arr[i][j];
+      } else if (arr[i][j] == arr[i][0]) {
+        num = arr[i][0];
+      }
+    }
+      largestArr.push(num);
+      num = 0; 
+  }
+   return largestArr;
+}
+
+console.log(largestOfFour([[17, 23, 25, 12], [25, 7, 34, 48], [4, -10, 18, 21], [-72, -3, -17, -10]]));

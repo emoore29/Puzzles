@@ -1,0 +1,26 @@
+function sumPrimes(num) {
+
+
+  function isPrime(number) {
+    if(number < 2) return false;
+    for (var i = 2; i < number; i++) {
+        if(number % i == 0)
+            return false;
+    }
+    return true;
+}
+
+let arr = [];
+
+for (let i = 2; i <= num; i++) {
+  if (isPrime(i) === true) {
+    arr.push(i)
+  }
+}
+
+return arr.reduce((a, b) => a + b)
+
+
+}
+
+console.log(sumPrimes(977));

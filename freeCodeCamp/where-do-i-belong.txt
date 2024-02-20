@@ -1,0 +1,26 @@
+function getIndexToIns(arr, num) {
+  //initial definitions
+  let result = 0;
+  let storeNum = 0;
+  let sortedArr = [];
+  //sort arr
+  
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > storeNum) {
+      storeNum = arr[i];
+      sortedArr.push(arr[i]);
+    } else {
+      sortedArr.unshift(arr[i]);
+    }
+  }
+
+  //find first number that num is greater than
+  for (let i = 0; i < sortedArr.length; i++) {
+    if (num > sortedArr[i]) {
+      result = i + 1;
+    }
+  }
+  return result;
+}
+
+console.log(getIndexToIns([5, 3, 20, 3], 5));

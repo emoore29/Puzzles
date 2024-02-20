@@ -1,0 +1,25 @@
+function smallestCommons(arr) {
+  let max = Math.max(arr[0], arr[1]);
+  let min = Math.min(arr[0], arr[1]);
+
+  let rangeArr = [];
+  for (let i = min; i <= max; i++) {
+    rangeArr.push(i);
+  }
+
+  let upperBound = 1;
+  for (let i = min; i <= max; i++) {
+    upperBound *= i;
+  }
+
+  let multiple = 1;
+
+   for (let i = 1; i <= upperBound; i++) {
+    multiple = i * min;
+    if (multiple % max == 0 && rangeArr.every(elem => multiple % elem == 0) == true) { 
+        return multiple;
+      } 
+      } 
+  }
+
+console.log(smallestCommons([2, 10]));

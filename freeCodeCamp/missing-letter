@@ -1,0 +1,16 @@
+function fearNotLetter(str) {
+  let alphabet = "abcdefghijklmnopqrstuvwxyz";
+  let firstLetter = str.substring(0, 1); 
+  let a = alphabet.indexOf(firstLetter);
+  let b = alphabet.indexOf(firstLetter) + str.length;
+  let snippet = alphabet.substring(a, b); //1, 5
+  
+ for (let i = 0; i < str.length; i++) {
+      if (str[i] !== snippet[i]) {
+        console.log("Found a missing letter at str index " + i + "!");
+        return snippet[i];
+      }
+  } 
+}
+
+console.log(fearNotLetter("stvwx"));

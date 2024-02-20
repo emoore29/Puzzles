@@ -1,0 +1,14 @@
+function convertHTML(str) {
+ let htmlEntities = {
+   "&" : "&amp;", 
+    "<" : "&lt;", 
+    ">" : "&gt;",
+    '"' : "&quot;",
+    "'" : "&apos;"
+ }
+
+return str.replace(/([&<>\"'])/g, match => htmlEntities[match]);
+
+}
+
+console.log(convertHTML("<>"));

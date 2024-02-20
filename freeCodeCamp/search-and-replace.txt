@@ -1,0 +1,16 @@
+function myReplace(str, before, after) {
+  let checkCapital = /^[A-Z]/;
+  if (checkCapital.test(before) === true) {  //if before starts with a capital
+      let firstLetter = after.substring(0, 1);
+      let rest = after.substring(1);      
+      after = firstLetter.toUpperCase().concat(rest);
+      return str.replace(before, after);
+  } else {      //else before starts with a lower case, so convert after to lowercase
+      let firstLetter = after.substring(0, 1);
+      let rest = after.substring(1);      
+      after = firstLetter.toLowerCase().concat(rest);
+      return str.replace(before, after);  
+  }; 
+}
+
+console.log(myReplace("I think we should look up there", "up", "Down"));

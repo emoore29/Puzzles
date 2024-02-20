@@ -1,0 +1,26 @@
+function pairElement(str) {
+  let arr = str.split(""); //[ 'G', 'C', 'G' ]
+  let newArr = arr.map(nucleobase => [nucleobase]); //[ [ 'G' ], [ 'C' ], [ 'G' ] ]
+  for (let i = 0; i < newArr.length; i++) {
+  newArr[i][0];
+  switch (newArr[i][0]) {
+    case "A":
+      newArr[i].push('T');
+      break;
+    case "T":
+      newArr[i].push('A');
+      break;
+    case "C":
+      newArr[i].push('G');
+      break;
+    case "G":
+      newArr[i].push('C');
+      break;
+}
+}
+ return newArr;
+}
+
+console.log(pairElement("TTGAG"));
+
+

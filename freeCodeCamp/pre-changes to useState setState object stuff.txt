@@ -1,0 +1,103 @@
+const { useState, useEffect, useCallback } = React;
+
+function Calculator() {
+  
+  const [input, setInput] = useState({display: 0, currentVal: 0, type: ""});
+  const [calc, setCalc] = useState({formula: "", currenttype: "number"});
+  
+  function handleInput(e) {
+    let keyPressed = e.target.innerHTML;
+    let type = e.target.className;
+    // setInput({currentVal: keyPressed});
+    
+   switch(type) {
+     case "number": //a number was pressed
+       if (input.display === 0 | /[x+\/-]/.test(keyPressed) | /[x+\/-]/.test(input.display)) { //if the display is 0 or input is an operator, replace display with keyPressed
+         setInput({display: keyPressed, type: type});
+       } else {
+         setInput({display: input.display + keyPressed, type: type});
+       }
+       break;
+     case "operator":
+        setInput({display: keyPressed, type: type})
+       break;
+     case "special": //special cases are AC, decimals, and equals
+       switch(keyPressed) {
+         case "AC": //clear all
+           setInput({display: 0, type: ""});
+           break;
+         case ".": //concat the decimal (if no other decimal exists)
+           if (!/[.]/.test(input.display)) { 
+             console.log("test");
+              setInput({display: input.display + keyPressed, type: type});
+           } 
+           console.log("test2")
+           break;
+         case "=":
+           console.log("do calculations (need to code this still...)")
+           break;
+         default:
+           console.log("default ran");
+       }
+       break;
+     default: 
+       console.log("default");
+   }
+  }
+  
+  //  (useEffect({function}, [dependency]))
+  
+  return (
+    <div id="calculator">
+      <Display calc={calc}  input={input} />
+      <Buttons handleInput={handleInput}/>
+    </div>
+  )
+}
+
+function Display(props) {
+    
+  return (
+    <div id="display">
+      <div id="top-display">
+        {props.calc.formula}
+      </div>
+      <div id="bottom-display">
+        {props.input.display}
+      </div>
+    </div>
+  )
+}
+
+function Buttons(props) {
+  
+  return (
+    <div id="buttons-container">
+      {buttonObjs.map(item => (
+        <button id={item.id} class={item.type} key={item.key} onClick={props.handleInput}>{item.key}</button>
+      ))}
+    </div>
+  )
+}
+
+const buttonObjs = [
+  {key: "AC", id: "clear", type: "special"},
+  {key: "/", id: "divide", type: "operator"},
+  {key: "x", id: "multiply", type: "operator"},
+  {key: 7, id: "seven", type: "number"},
+  {key: 8, id: "eight", type: "number"},
+  {key: 9, id: "nine", type: "number"},
+  {key: "-", id: "subtract", type: "operator"},
+  {key: 4, id: "four", type: "number"},
+  {key: 5, id: "five", type: "number"},
+  {key: 6, id: "six", type: "number"},
+  {key: "+", id: "add", type: "operator"},
+  {key: 1, id: "one", type: "number"},
+  {key: 2, id: "two", type: "number"},
+  {key: 3, id: "three", type: "number"},
+  {key: "=", id: "equals", type: "special"},
+  {key: 0, id: "zero", type: "number"},
+  {key: ".", id: "decimal", type: "special"}
+]
+
+ReactDOM.render(<Calculator />, document.getElementById("wrapper"));

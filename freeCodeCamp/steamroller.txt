@@ -1,0 +1,25 @@
+function steamrollArray(arr) {
+  
+  let flatArr = [];
+  
+  for (let i = 0; i < arr.length; i++) {
+    if (Array.isArray(arr[i]) === false) {
+      flatArr.push(arr[i]);
+    } else {
+      checkIfArr(arr[i]);
+    }
+  }
+  
+  function checkIfArr(elemArr) { 
+    if (Array.isArray(elemArr) === true) {
+      for (let i = 0; i < elemArr.length; i++) {
+        checkIfArr(elemArr[i]);
+      } 
+    } else {
+        flatArr.push(elemArr);
+      }
+  }
+  return flatArr;
+}
+
+console.log(steamrollArray([1, [2], [3, [[4]]]]));

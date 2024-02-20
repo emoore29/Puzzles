@@ -1,0 +1,18 @@
+function sumFibs(num) {
+  let xArr = [1, 1];
+  let x = 0;
+
+  while (x < num) {
+    x = xArr[xArr.length - 1] + xArr[xArr.length - 2];
+    if (x <= num) {
+      xArr.push(x);
+    } 
+  }
+  
+  let oddArr = xArr.filter(fibNumber => fibNumber % 2 == 1)
+  return oddArr.reduce((a, b) => a + b); //a is previous value, b is current. no initial value means a and b are initialised as first to elements of the array.
+
+
+}
+
+console.log(sumFibs(75025));
