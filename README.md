@@ -5,7 +5,3 @@ The files in the freeCodeCamp folder are my answers to the challenges in freeCod
 ## LeetCode
 
 I've decided to save my LeetCode solutions here so I can track my progress and refer back to old solutions to keep improving my programming skills.
-
-## Project Euler
-
-As with LeetCode, I've decided to use [Project Euler](https://projecteuler.net/) to improve my problem-solving skills and track my solutions here.
